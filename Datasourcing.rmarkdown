@@ -1,125 +1,134 @@
----
-title: "Exploratory Data Analysis Report"
-author: "Your Name"
-date: "`r Sys.Date()`"
-output: 
-  pdf_document: default
-  html_document: default
----
+# Carregando os conjuntos de dados
+employee_data <- read.csv("employee_final.csv")
+sku_cost_data <- read.csv("sku_cost.csv")
+sku_dataset <- read.csv("sku_dataset.csv")
+sku_price_data <- read.csv("sku_price.csv")
+sku_status_dataset <- read.csv("sku_status_dataset.csv")
+store_data <- read.csv("store_final.csv")
+target_store_data <- read.csv("target_store_final.csv")
+targets_salesperson_data <- read.csv("targets_salesperson_final.csv")
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
+# Mostrando as primeiras linhas de cada conjunto de dados
+head(employee_data)
+head(sku_cost_data)
+head(sku_dataset)
+head(sku_price_data)
+head(sku_status_dataset)
+head(store_data)
+head(target_store_data)
+head(targets_salesperson_data)
 
-# Employee Data
+# Verificando a estrutura dos dados
+str(employee_data)
+str(sku_cost_data)
+str(sku_dataset)
+str(sku_price_data)
+str(sku_status_dataset)
+str(store_data)
+str(target_store_data)
+str(targets_salesperson_data)
 
-## Load the data
-employee_data <- read.csv("/mnt/data/employee_final.csv")
-
-## Summary statistics
+# Obtendo um resumo estatístico das variáveis
 summary(employee_data)
-
-## Visualizations
-### Example: Age Distribution
-ggplot(employee_data, aes(x = Age)) + 
-  geom_histogram(binwidth = 5, fill = "blue", color = "black") + 
-  labs(title = "Age Distribution of Employees", x = "Age", y = "Count")
-
-#### Example: Department Distribution
-ggplot(employee_data, aes(x = Department)) + 
-  geom_bar(fill = "green", color = "black") + 
-  labs(title = "Distribution of Departments", x = "Department", y = "Count") + 
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-# SKU Cost Data
-
-## Load the data
-sku_cost_data <- read.csv("/mnt/data/sku_cost.csv")
-
-## Summary statistics
 summary(sku_cost_data)
-
-
-## Visualizations
-ggplot(sku_cost_data, aes(x = Cost)) + 
-  geom_histogram(binwidth = 10, fill = "red", color = "black") + 
-  labs(title = "Cost Distribution", x = "Cost", y = "Count")
-
-# SKU Dataset
-
-## Load the data
-sku_data <- read.csv("/mnt/data/sku_dataset.csv")
-
-## Summary statistics
-cs, visualizations, and identifying key patterns or insights
-
-## Visualizations
-### Example visualization for SKU status
-ggplot(sku_data, aes(x = Status)) + 
-  geom_bar(fill = "purple", color = "black") + 
-  labs(title = "SKU Status Distribution", x = "Status", y = "Count")
-
-# SKU Price Data
-
-## Load the data
-sku_price_data <- read.csv("/mnt/data/sku_price.csv")
-
-## Summary statistics
+summary(sku_dataset)
 summary(sku_price_data)
-
-## Visualizations
-ggplot(sku_price_data, aes(x = Price)) + 
-  geom_histogram(binwidth = 10, fill = "orange", color = "black") + 
-  labs(title = "Price Distribution", x = "Price", y = "Count")
-
-# SKU Status Dataset
-
-## Load the data
-sku_status_data <- read.csv("/mnt/data/sku_status_dataset.csv")
-
-## Summary statistics
-summary(sku_status_data)
-
-## Visualizations
-ggplot(sku_status_data, aes(x = Status)) + 
-  geom_bar(fill = "yellow", color = "black") + 
-  labs(title = "Status Overview", x = "Status", y = "Count")
-
-# Store Data
-
-## Load the data
-store_data <- read.csv("/mnt/data/store_final.csv")
-
-## Summary statistics
+summary(sku_status_dataset)
 summary(store_data)
+summary(target_store_data)
+summary(targets_salesperson_data)
 
-## Visualizations
-ggplot(store_data, aes(x = Store_Performance)) + 
-  geom_histogram(binwidth = 1, fill = "pink", color = "black") + 
-  labs(title = "Store Performance", x = "Performance", y = "Count")
+# Descrição das variáveis
+Employee_data
+id_employee: Identificador único do funcionário
+name: Nome do funcionário
+surname: Sobrenome do funcionário
+cpf: Número do CPF do funcionário
+status: Status do funcionário (ativo ou inativo)
+role: Cargo do funcionário
+initial_date: Data de início do funcionário na empresa
+end_date: Data de término do funcionário na empresa
+store_id: Chave estrangeira para a loja em que o funcionário trabalha
 
-# Target Store Data
+sku_cost_data
+cod_prod: Código do produto
+data_inicio: Data de início da vigência do custo
+data_fim: Data de término da vigência do custo
+custo: Custo do produto
 
-## Load the data
-target_store_data <- read.csv("/mnt/data/target_store_final.csv")
+sku_dataset
+cod_prod: Código do produto
+nome_abre: Nome abreviado do produto
+nome_completo: Nome completo do produto
+descrição: Descrição do produto
+categoria: Categoria do produto
+sub_categoria: Subcategoria do produto
+marca: Marca do produto
+conteudo_valor: Conteúdo do produto
+conteudo_medida: Unidade de medida do conteúdo
 
-## Summary statistics
-cs, visualizations, and identifying key patterns or insights
+sku_price_data
+cod_prod: Código do produto
+data_inicio: Data de início da vigência do preço
+data_fim: Data de término da vigência do preço
+preco: Preço do produto
 
-## Visualizations
-ggplot(target_store_data, aes(x = Target)) + 
-  geom_histogram(binwidth = 5, fill = "cyan", color = "black") + 
-  labs(title = "Target Overview", x = "Target", y = "Count")
+sku_status_dataset
+cod_prod: Código do produto
+data_inicio: Data de início da vigência do status
+data_fim: Data de término da vigência do status
 
-# Target Salesperson data
+store_data
+nome_loja: Nome da loja
+regiao: Região da loja
+diretoria: Diretoria da loja
+data_inauguracao: Data de inauguração da loja
 
-## Load the data
-target_salesperson_data <- read.csv("/mnt/data/targets_salesperson_final.csv")
+target_store_data
+month: Mês do alvo
+store_id: Identificador da loja
+sales_target: Meta de vendas da loja
 
-## Summary statistics
-summary(target_salesperson_data)
+targets_salesperson_data
 
-## Visualizations
-ggplot(target_salesperson_data, aes(x = Salesperson_Performance)) + 
-  geom_histogram(binwidth = 1, fill = "violet", color = "black") + 
-  labs(title = "Salesperson Performance", x = "Performance", y = "Count")
+# Criando histogramas, gráficos de densidade e boxplots para as variáveis principais
+
+library(ggplot2)
+
+# Exemplo para o conjunto de dados de SKU
+ggplot(sku_dataset, aes(x = conteudo_valor)) + 
+  geom_histogram(binwidth = 1) + 
+  theme_minimal()
+
+ggplot(sku_dataset, aes(x = conteudo_valor)) + 
+  geom_density() + 
+  theme_minimal()
+
+ggplot(sku_dataset, aes(y = conteudo_valor)) + 
+  geom_boxplot() + 
+  theme_minimal()
+
+# Criando gráficos de dispersão (scatter plots) e gráficos de barras
+
+# Exemplo de scatter plot entre duas variáveis de SKU
+ggplot(sku_dataset, aes(x = conteudo_valor, y = conteudo_volume)) + 
+  geom_point() + 
+  theme_minimal()
+
+# Exemplo de gráfico de barras
+ggplot(store_data, aes(x = variavel_categorica)) + 
+  geom_bar() + 
+  theme_minimal()
+
+# Cálculo e visualização da matriz de correlação
+cor_matrix <- cor(sku_dataset[,sapply(sku_dataset, is.numeric)])
+library(corrplot)
+corrplot(cor_matrix, method = "color")
+
+# Implementação de PCA utilizando FactoMineR ou prcomp()
+library(FactoMineR)
+pca_result <- PCA(sku_dataset, scale.unit = TRUE, ncp = 5, graph = TRUE)
+
+# Visualização dos resultados da PCA
+summary(pca_result)
+plot(pca_result, choix = "var")
