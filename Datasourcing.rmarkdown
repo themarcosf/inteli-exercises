@@ -1,0 +1,125 @@
+---
+title: "Exploratory Data Analysis Report"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: 
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+
+# Employee Data
+
+## Load the data
+employee_data <- read.csv("/mnt/data/employee_final.csv")
+
+## Summary statistics
+summary(employee_data)
+
+## Visualizations
+### Example: Age Distribution
+ggplot(employee_data, aes(x = Age)) + 
+  geom_histogram(binwidth = 5, fill = "blue", color = "black") + 
+  labs(title = "Age Distribution of Employees", x = "Age", y = "Count")
+
+#### Example: Department Distribution
+ggplot(employee_data, aes(x = Department)) + 
+  geom_bar(fill = "green", color = "black") + 
+  labs(title = "Distribution of Departments", x = "Department", y = "Count") + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# SKU Cost Data
+
+## Load the data
+sku_cost_data <- read.csv("/mnt/data/sku_cost.csv")
+
+## Summary statistics
+summary(sku_cost_data)
+
+
+## Visualizations
+ggplot(sku_cost_data, aes(x = Cost)) + 
+  geom_histogram(binwidth = 10, fill = "red", color = "black") + 
+  labs(title = "Cost Distribution", x = "Cost", y = "Count")
+
+# SKU Dataset
+
+## Load the data
+sku_data <- read.csv("/mnt/data/sku_dataset.csv")
+
+## Summary statistics
+cs, visualizations, and identifying key patterns or insights
+
+## Visualizations
+### Example visualization for SKU status
+ggplot(sku_data, aes(x = Status)) + 
+  geom_bar(fill = "purple", color = "black") + 
+  labs(title = "SKU Status Distribution", x = "Status", y = "Count")
+
+# SKU Price Data
+
+## Load the data
+sku_price_data <- read.csv("/mnt/data/sku_price.csv")
+
+## Summary statistics
+summary(sku_price_data)
+
+## Visualizations
+ggplot(sku_price_data, aes(x = Price)) + 
+  geom_histogram(binwidth = 10, fill = "orange", color = "black") + 
+  labs(title = "Price Distribution", x = "Price", y = "Count")
+
+# SKU Status Dataset
+
+## Load the data
+sku_status_data <- read.csv("/mnt/data/sku_status_dataset.csv")
+
+## Summary statistics
+summary(sku_status_data)
+
+## Visualizations
+ggplot(sku_status_data, aes(x = Status)) + 
+  geom_bar(fill = "yellow", color = "black") + 
+  labs(title = "Status Overview", x = "Status", y = "Count")
+
+# Store Data
+
+## Load the data
+store_data <- read.csv("/mnt/data/store_final.csv")
+
+## Summary statistics
+summary(store_data)
+
+## Visualizations
+ggplot(store_data, aes(x = Store_Performance)) + 
+  geom_histogram(binwidth = 1, fill = "pink", color = "black") + 
+  labs(title = "Store Performance", x = "Performance", y = "Count")
+
+# Target Store Data
+
+## Load the data
+target_store_data <- read.csv("/mnt/data/target_store_final.csv")
+
+## Summary statistics
+cs, visualizations, and identifying key patterns or insights
+
+## Visualizations
+ggplot(target_store_data, aes(x = Target)) + 
+  geom_histogram(binwidth = 5, fill = "cyan", color = "black") + 
+  labs(title = "Target Overview", x = "Target", y = "Count")
+
+# Target Salesperson data
+
+## Load the data
+target_salesperson_data <- read.csv("/mnt/data/targets_salesperson_final.csv")
+
+## Summary statistics
+summary(target_salesperson_data)
+
+## Visualizations
+ggplot(target_salesperson_data, aes(x = Salesperson_Performance)) + 
+  geom_histogram(binwidth = 1, fill = "violet", color = "black") + 
+  labs(title = "Salesperson Performance", x = "Performance", y = "Count")
