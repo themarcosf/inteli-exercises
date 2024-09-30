@@ -1,0 +1,6 @@
+artifact_location: file:///Users/marcosf/Desktop/inteli-exercises/mlruns/837391395039808788
+creation_time: 1727691865549
+experiment_id: '837391395039808788'
+last_update_time: 1727691865549
+lifecycle_stage: active
+name: Pipeline com MLFlow e Prefect
